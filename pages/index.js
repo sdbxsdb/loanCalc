@@ -3,8 +3,8 @@ import Script from "next/script";
 
 export default function Home() {
   const [loanType, setLoanType] = useState("Select Loan Type");
-  const [loanAmount, setLoanAmount] = useState(1000);
-  const [loanTerm, setLoanTerm] = useState(4);
+  const [loanAmount, setLoanAmount] = useState(10000);
+  const [loanTerm, setLoanTerm] = useState(28);
   const [schedule, setSchedule] = useState("monthly");
 
   const loanTermYears = loanTerm / 12;
