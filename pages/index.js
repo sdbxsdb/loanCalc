@@ -9,17 +9,30 @@ export default function Home() {
 
   const loanTermYears = loanTerm / 12;
 
-  const percentageModifier = 1;
-  const percentage = (6.05 * percentageModifier) / 10;
+  const personalLoanUpTo7500InterestAmount = 12
+  const personalLoanUpTo7500Interest = loanAmount * loanTermYears * (parseFloat(personalLoanUpTo7500InterestAmount) / 100);
+  const personalLoanUpTo7500Total = parseFloat(loanAmount) + parseFloat(personalLoanUpTo7500Interest.toFixed(2));
 
-  const repayable = loanAmount * percentage;
+  const personalLoanUpTo15000InterestAmount = 8.9
+  const personalLoanUpTo15000Interest = loanAmount * loanTermYears * (parseFloat(personalLoanUpTo15000InterestAmount) / 100);
+  const personalLoanUpTo15000Total = parseFloat(loanAmount) + parseFloat(personalLoanUpTo15000Interest.toFixed(2));
+  
+  const personalLoanUpTo25000InterestAmount = 7.9
+  const personalLoanUpTo25000Interest = loanAmount * loanTermYears * (parseFloat(personalLoanUpTo25000InterestAmount) / 100);
+  const personalLoanUpTo25000Total = parseFloat(loanAmount) + parseFloat(personalLoanUpTo25000Interest.toFixed(2));
+  
+  const personalLoanUpTo100000InterestAmount = 4.9
+  const personalLoanUpTo100000Interest = loanAmount * loanTermYears * (parseFloat(personalLoanUpTo100000InterestAmount) / 100);
+  const personalLoanUpTo100000Total = parseFloat(loanAmount) + parseFloat(personalLoanUpTo100000Interest.toFixed(2));
+  
+  const personalLoanUpTo50000InterestAmount = 4.9
+  const personalLoanUpTo50000Interest = loanAmount * loanTermYears * (parseFloat(personalLoanUpTo50000InterestAmount) / 100);
+  const personalLoanUpTo50000Total = parseFloat(loanAmount) + parseFloat(personalLoanUpTo50000Interest.toFixed(2));
 
   function updateSchedule(e, scheduleValue) {
     e.preventDefault();
     setSchedule(scheduleValue);
   }
-
-  console.log(loanType);
 
   return (
     <section>
@@ -91,7 +104,8 @@ export default function Home() {
                     ? "7500"
                     : loanType === "Personal Loan £15,000 to £25,000"
                     ? "15000"
-                    : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                    : loanType ===
+                      "Secured / Share Secured Personal Loan up to £100,000"
                     ? "1000"
                     : loanType === "Share-Secure Loan up to £50,000"
                     ? "1000"
@@ -104,7 +118,8 @@ export default function Home() {
                     ? "15000"
                     : loanType === "Personal Loan £15,000 to £25,000"
                     ? "25000"
-                    : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                    : loanType ===
+                      "Secured / Share Secured Personal Loan up to £100,000"
                     ? "100000"
                     : loanType === "Share-Secure Loan up to £50,000"
                     ? "50000"
@@ -154,7 +169,8 @@ export default function Home() {
                     ? "120"
                     : loanType === "Personal Loan £15,000 to £25,000"
                     ? "120"
-                    : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                    : loanType ===
+                      "Secured / Share Secured Personal Loan up to £100,000"
                     ? "300"
                     : loanType === "Share-Secure Loan up to £50,000"
                     ? "300"
@@ -165,11 +181,28 @@ export default function Home() {
               />
 
               <div className="flex flex-col md:flex-row justify-between w-full text-center   border-b-2 border-opacity-10">
+                
+                {/*TOTAL YOU'LL PAY*/}
                 <div className="w-full md:w-1/4 py-6 md:py-28 flex flex-col">
                   <p className="opacity-30 text-mobileNav">Total you'll pay</p>
-                  <p className="text-footerNav">£1,071.82</p>
+                  <p className="text-footerNav">
+                    {` ${
+                      loanType === "Personal Loan up to £7,500"
+                        ? `£${(personalLoanUpTo7500Total).toFixed(2)}`
+                        : loanType === "Personal Loan £7,500 to £15,000"
+                        ? `£${(personalLoanUpTo15000Total.toFixed(2))}`
+                        : loanType === "Personal Loan £15,000 to £25,000"
+                        ? `£${(personalLoanUpTo25000Total.toFixed(2))}`
+                        : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                        ? `£${(personalLoanUpTo100000Total.toFixed(2))}`
+                        : loanType === "Share-Secure Loan up to £50,000"
+                        ? `£${(personalLoanUpTo50000Total.toFixed(2))}`
+                        : ""
+                    }`}
+                  </p>
                 </div>
 
+                {/*AMOUNT PAYABLE*/}
                 <div className="flex-1 order-first md:order-none paymentSchedule">
                   <div className="">
                     <ul className="flex justify-around md:justify-between gap-x-4">
@@ -224,7 +257,19 @@ export default function Home() {
                             Monthly Repairments
                           </p>
                           <p className="text-3xl">
-                            £{(repayable / loanTerm).toFixed(2)}
+                          {` ${
+                              loanType === "Personal Loan up to £7,500"
+                                ? `£${(personalLoanUpTo7500Total / loanTerm).toFixed(2)}`
+                                : loanType === "Personal Loan £7,500 to £15,000"
+                                ? `£${(personalLoanUpTo15000Total / loanTerm).toFixed(2)}`
+                                : loanType === "Personal Loan £15,000 to £25,000"
+                                ? `£${(personalLoanUpTo25000Total / loanTerm).toFixed(2)}`
+                                : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                                ? `£${(personalLoanUpTo100000Total / loanTerm).toFixed(2)}`
+                                : loanType === "Share-Secure Loan up to £50,000"
+                                ? `£${(personalLoanUpTo50000Total / loanTerm).toFixed(2)}`
+                                : ""
+                            }`}
                           </p>
                         </div>
                       ) : null}
@@ -235,7 +280,19 @@ export default function Home() {
                             Fortnightly Repairments
                           </p>
                           <p className="text-3xl">
-                            £{(repayable / (loanTerm * 2)).toFixed(2)}
+                          {` ${
+                              loanType === "Personal Loan up to £7,500"
+                                ? `£${(personalLoanUpTo7500Total / loanTerm * 2).toFixed(2)}`
+                                : loanType === "Personal Loan £7,500 to £15,000"
+                                ? `£${(personalLoanUpTo15000Total / loanTerm * 2).toFixed(2)}`
+                                : loanType === "Personal Loan £15,000 to £25,000"
+                                ? `£${(personalLoanUpTo25000Total / loanTerm * 2).toFixed(2)}`
+                                : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                                ? `£${(personalLoanUpTo100000Total / loanTerm * 2).toFixed(2)}`
+                                : loanType === "Share-Secure Loan up to £50,000"
+                                ? `£${(personalLoanUpTo50000Total / loanTerm * 2).toFixed(2)}`
+                                : ""
+                            }`}
                           </p>
                         </div>
                       ) : null}
@@ -246,7 +303,11 @@ export default function Home() {
                             Weekly Repairments
                           </p>
                           <p className="text-3xl">
-                            £{(repayable / (loanTerm * 4)).toFixed(2)}
+                            £
+                            {(
+                              personalLoanUpTo7500Total /
+                              (loanTerm * 4)
+                            ).toFixed(2)}
                           </p>
                         </div>
                       ) : null}
@@ -254,10 +315,28 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/*INTEREST*/}
                 <div className="w-full md:w-1/4 py-6 md:py-28 flex flex-col">
-                  <p className="opacity-30 text-mobileNav">Interest</p>
-                  <p className="text-footerNav">£71.82</p>
+                  <p className="opacity-30 text-mobileNav">Interest
+                  {` ${
+                      loanType === "Personal Loan up to £7,500"
+                        ? `${(personalLoanUpTo7500InterestAmount).toFixed(2)}%`
+                        : loanType === "Personal Loan £7,500 to £15,000"
+                        ? `${(personalLoanUpTo15000InterestAmount.toFixed(2))}%`
+                        : loanType === "Personal Loan £15,000 to £25,000"
+                        ? `${(personalLoanUpTo25000InterestAmount.toFixed(2))}%`
+                        : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                        ? `${(personalLoanUpTo100000InterestAmount.toFixed(2))}%`
+                        : loanType === "Share-Secure Loan up to £50,000"
+                        ? `${(personalLoanUpTo50000InterestAmount.toFixed(2))}%`
+                        : ""
+                    }`}
+                  </p>
+                  <p className="text-footerNav">
+                    £{personalLoanUpTo7500Interest.toFixed(2)}
+                  </p>
                 </div>
+
               </div>
               <div className="flex justify-between items-center w-full">
                 <p className="text-1xs">6.05% APR (£100 - £25,000)</p>
