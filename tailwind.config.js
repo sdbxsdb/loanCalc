@@ -26,6 +26,7 @@ module.exports = {
           '7xl': '5rem',            //  80px    - Menu / Titles
           '5xl': '3rem',            //  
           '4xl': '2.875rem',          //  46px    - CTA Title
+          '3xl': '2.25rem',          //  36px    - CTA Title
           '2xxl': '1.5rem',         //  24px    - Script content
           '2xl': '1.375rem',        //  22px    - Script content
           '1xs': '1rem',            // 16px

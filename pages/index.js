@@ -3,9 +3,11 @@ import Script from "next/script";
 
 export default function Home() {
   const [loanType, setLoanType] = useState("Select Loan Type");
-  const [loanAmount, setLoanAmount] = useState(2500);
+  const [loanAmount, setLoanAmount] = useState(800);
   const [loanTerm, setLoanTerm] = useState(4);
   const [schedule, setSchedule] = useState("monthly");
+
+  const loanTermYears = loanTerm / 12;
 
   const percentageModifier = 1;
   const percentage = (6.05 * percentageModifier) / 10;
@@ -18,32 +20,41 @@ export default function Home() {
   }
 
   return (
-
     <section>
-
-      {/*This is pulling in older JS from an external file which is changing the input range color.  Head has to go inside the wrapping div otherwise head will try and load within*/}
+      {/*This is pulling in older JS from an external file which is changing the input range color.  We import Script from next/script to use this*/}
       <Script type="text/javascript" src="js/calcInputRange.js"></Script>
 
       <div className="w-full lg:w-7/12 max-w-[754px] text-white">
-          <div className="w-screen md:w-auto p-14 bg-darkestBlue md:rounded-2xl">
-            <form action="" className="flex flex-col gap-y-10">
-              <div className="w-full bg-primary rounded-full pr-4">
-                <select
-                  value={loanType}
-                  onChange={(e) => setLoanType(e.target.value)}
-                  name="loanType"
-                  id=""
-                  className="p-[24px] bg-primary rounded-full w-full focus:outline-none cursor-pointer"
-                >
-                  <option value="Select Loan Type" disabled>
-                    Select Loan Type
-                  </option>
-                  <option value="Loan 1">Loan 1</option>
-                  <option value="Loan 2">Loan 2</option>
-                  <option value="Loan 3">Loan 3</option>
-                </select>
-              </div>
+        <div className="w-screen md:w-auto p-14 bg-darkestBlue md:rounded-2xl">
+          <form action="" className="flex flex-col gap-y-10">
+            <div className="w-full bg-primary rounded-full pr-4">
+              <select
+                value={loanType}
+                onChange={(e) => setLoanType(e.target.value)}
+                name="loanType"
+                id=""
+                className="p-[24px] bg-primary rounded-full w-full focus:outline-none cursor-pointer"
+              >
+                <option value="Select Loan Type" disabled>
+                  Select Loan Type
+                </option>
+                <option value="Personal Loan up to £7,500">
+                  Personal Loan up to £7,500
+                </option>
+                <option value="Personal Loan £7,501 to £15,000">
+                  Personal Loan £7,501 to £15,000
+                </option>
+                <option value="Personal Loan £15,000 to £25,000">
+                  Personal Loan £15,000 to £25,000
+                </option>
+                <option value="Secured / Share Secured Personal Loan up to £25,000">
+                  Secured / Share Secured Personal Loan up to £25,000
+                </option>
+              </select>
+            </div>
 
+            {/*PERSONAL LOAN UP TO 7.5K*/}
+            <div className="flex flex-col gap-y-10">
               <div className="flex flex-col gap-y-6">
                 <div className="flex justify-between w-full">
                   <label
@@ -69,7 +80,7 @@ export default function Home() {
                 name="rangeInput"
                 className="range rounded-lg bg-primary h-[10px] w-full"
                 min="100"
-                max="25000"
+                max="7500"
                 step="100"
                 value={loanAmount}
               />
@@ -87,9 +98,16 @@ export default function Home() {
                       id="termInput"
                       className="text-white w-[20px] bg-transparent"
                     >
-                      {loanTerm}
+                      {loanTerm} 
                     </span>
-                    <span> months</span>
+                    <span> months </span>
+                    <span
+                      id="termInput"
+                      className="text-white w-[33px] bg-transparent"
+                    >(
+                      {(loanTermYears).toFixed(1)}
+                    </span>
+                    <span> years)</span>
                   </div>
                 </div>
               </div>
@@ -100,7 +118,7 @@ export default function Home() {
                 name="termInput"
                 className="range rounded-lg bg-primary h-[10px] w-full"
                 min="2"
-                max="24"
+                max="60"
                 step="1"
                 value={loanTerm}
               />
@@ -111,12 +129,14 @@ export default function Home() {
                   <p className="text-footerNav">£1,071.82</p>
                 </div>
 
-                <div className="flex-1 order-first md:order-none">
+                <div className="flex-1 order-first md:order-none paymentSchedule">
                   <div className="">
                     <ul className="flex justify-around md:justify-between gap-x-4">
                       <li
                         className={`pb-[5px] ${
-                          schedule !== "monthly" ? "opacity-30" : ""
+                          schedule !== "monthly"
+                            ? "opacity-30"
+                            : "border-b-[3px]"
                         }`}
                       >
                         <button
@@ -128,7 +148,9 @@ export default function Home() {
                       </li>
                       <li
                         className={`pb-[5px] ${
-                          schedule !== "fortnightly" ? "opacity-30" : ""
+                          schedule !== "fortnightly"
+                            ? "opacity-30"
+                            : "border-b-[3px]"
                         }`}
                       >
                         <button
@@ -140,7 +162,9 @@ export default function Home() {
                       </li>
                       <li
                         className={`pb-[5px] ${
-                          schedule !== "weekly" ? "opacity-30" : ""
+                          schedule !== "weekly"
+                            ? "opacity-30"
+                            : "border-b-[3px]"
                         }`}
                       >
                         <button
@@ -158,7 +182,7 @@ export default function Home() {
                           <p className="opacity-30 text-mobileNav">
                             Monthly Repairments
                           </p>
-                          <p className="text-4xl">
+                          <p className="text-3xl">
                             £{(repayable / loanTerm).toFixed(2)}
                           </p>
                         </div>
@@ -169,7 +193,7 @@ export default function Home() {
                           <p className="opacity-30 text-mobileNav">
                             Fortnightly Repairments
                           </p>
-                          <p className="text-4xl">
+                          <p className="text-3xl">
                             £{(repayable / (loanTerm * 2)).toFixed(2)}
                           </p>
                         </div>
@@ -180,7 +204,7 @@ export default function Home() {
                           <p className="opacity-30 text-mobileNav">
                             Weekly Repairments
                           </p>
-                          <p className="text-4xl">
+                          <p className="text-3xl">
                             £{(repayable / (loanTerm * 4)).toFixed(2)}
                           </p>
                         </div>
@@ -233,22 +257,16 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+            {/*END OF // PERSONAL LOAN UP TO 7.5K*/}
 
-          <p className="mt-6 opacity-30 text-center px-4">
-            *for amounts over £25,000, please contact the credit union directly
-          </p>
-
-
+          </form>
         </div>
 
+        <p className="mt-6 opacity-30 text-center px-4">
+          *for amounts over £25,000, please contact the credit union directly
+        </p>
+      </div>
     </section>
-    
-      
-  
-      
-
-
   );
 }
