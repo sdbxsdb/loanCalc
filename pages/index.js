@@ -8,6 +8,8 @@ export default function Home() {
   const [schedule, setSchedule] = useState("monthly");
 
   const loanTermYears = loanTerm / 12;
+  const loanTermWeeks = loanTerm * 4.3333;
+
 
   const personalLoanUpTo7500InterestAmount = 12
   const personalLoanUpTo7500Interest = loanAmount * loanTermYears * (parseFloat(personalLoanUpTo7500InterestAmount) / 100);
@@ -48,7 +50,9 @@ export default function Home() {
               {/*SELECT LOAN TYPE*/} 
               <select
                 value={loanType}
-                onChange={(e) => setLoanType(e.target.value)}
+                onChange={(e) => {
+                  setLoanType(e.target.value);
+                }}
                 name="loanType"
                 id=""
                 className="p-[24px] bg-primary rounded-full w-full focus:outline-none cursor-pointer"
@@ -271,15 +275,15 @@ export default function Home() {
                           <p className="text-3xl">
                           {` ${
                               loanType === "Personal Loan up to £7,500"
-                                ? `£${(personalLoanUpTo7500Total / loanTerm * 4).toFixed(2)}`
+                                ? `£${(personalLoanUpTo7500Total / loanTerm).toFixed(2)}`
                                 : loanType === "Personal Loan £7,500 to £15,000"
-                                ? `£${(personalLoanUpTo15000Total / loanTerm * 4).toFixed(2)}`
+                                ? `£${(personalLoanUpTo15000Total / loanTerm).toFixed(2)}`
                                 : loanType === "Personal Loan £15,000 to £25,000"
-                                ? `£${(personalLoanUpTo25000Total / loanTerm * 4).toFixed(2)}`
+                                ? `£${(personalLoanUpTo25000Total / loanTerm).toFixed(2)}`
                                 : loanType === "Secured / Share Secured Personal Loan up to £100,000"
-                                ? `£${(personalLoanUpTo100000Total / loanTerm * 4).toFixed(2)}`
+                                ? `£${(personalLoanUpTo100000Total / loanTerm).toFixed(2)}`
                                 : loanType === "Share-Secure Loan up to £50,000"
-                                ? `£${(personalLoanUpTo50000Total / loanTerm * 4).toFixed(2)}`
+                                ? `£${(personalLoanUpTo50000Total / loanTerm).toFixed(2)}`
                                 : ""
                             }`}
                           </p>
@@ -295,15 +299,15 @@ export default function Home() {
                           <p className="text-3xl">
                           {` ${
                               loanType === "Personal Loan up to £7,500"
-                                ? `£${(personalLoanUpTo7500Total / loanTerm * 2).toFixed(2)}`
+                                ? `£${((personalLoanUpTo7500Total / loanTermWeeks) * 2).toFixed(2)}`
                                 : loanType === "Personal Loan £7,500 to £15,000"
-                                ? `£${(personalLoanUpTo15000Total / loanTerm * 2).toFixed(2)}`
+                                ? `£${((personalLoanUpTo15000Total / loanTermWeeks) * 2).toFixed(2)}`
                                 : loanType === "Personal Loan £15,000 to £25,000"
-                                ? `£${(personalLoanUpTo25000Total / loanTerm * 2).toFixed(2)}`
+                                ? `£${((personalLoanUpTo25000Total / loanTermWeeks) * 2).toFixed(2)}`
                                 : loanType === "Secured / Share Secured Personal Loan up to £100,000"
-                                ? `£${(personalLoanUpTo100000Total / loanTerm * 2).toFixed(2)}`
+                                ? `£${((personalLoanUpTo100000Total / loanTermWeeks) * 2).toFixed(2)}`
                                 : loanType === "Share-Secure Loan up to £50,000"
-                                ? `£${(personalLoanUpTo50000Total / loanTerm * 2).toFixed(2)}`
+                                ? `£${((personalLoanUpTo50000Total / loanTermWeeks) * 2).toFixed(2)}`
                                 : ""
                             }`}
                           </p>
@@ -319,15 +323,15 @@ export default function Home() {
                           <p className="text-3xl">
                           {` ${
                               loanType === "Personal Loan up to £7,500"
-                                ? `£${(personalLoanUpTo7500Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo7500Total / loanTermWeeks).toFixed(2)}`
                                 : loanType === "Personal Loan £7,500 to £15,000"
-                                ? `£${(personalLoanUpTo15000Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo15000Total / loanTermWeeks).toFixed(2)}`
                                 : loanType === "Personal Loan £15,000 to £25,000"
-                                ? `£${(personalLoanUpTo25000Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo25000Total / loanTermWeeks).toFixed(2)}`
                                 : loanType === "Secured / Share Secured Personal Loan up to £100,000"
-                                ? `£${(personalLoanUpTo100000Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo100000Total / loanTermWeeks).toFixed(2)}`
                                 : loanType === "Share-Secure Loan up to £50,000"
-                                ? `£${(personalLoanUpTo50000Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo50000Total / loanTermWeeks).toFixed(2)}`
                                 : ""
                             }`}
                           </p>
