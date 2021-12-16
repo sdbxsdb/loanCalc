@@ -3,7 +3,7 @@ import Script from "next/script";
 
 export default function Home() {
   const [loanType, setLoanType] = useState("Select Loan Type");
-  const [loanAmount, setLoanAmount] = useState(800);
+  const [loanAmount, setLoanAmount] = useState(1000);
   const [loanTerm, setLoanTerm] = useState(4);
   const [schedule, setSchedule] = useState("monthly");
 
@@ -43,14 +43,17 @@ export default function Home() {
                 <option value="Personal Loan up to £7,500">
                   Personal Loan up to £7,500
                 </option>
-                <option value="Personal Loan £7,501 to £15,000">
-                  Personal Loan £7,501 to £15,000
+                <option value="Personal Loan £7,500 to £15,000">
+                  Personal Loan £7,500 to £15,000
                 </option>
                 <option value="Personal Loan £15,000 to £25,000">
                   Personal Loan £15,000 to £25,000
                 </option>
-                <option value="Secured / Share Secured Personal Loan up to £25,000">
-                  Secured / Share Secured Personal Loan up to £25,000
+                <option value="Secured / Share Secured Personal Loan up to £100,000">
+                  Secured / Share Secured Personal Loan up to £100,000
+                </option>
+                <option value="Share-Secure Loan up to £50,000">
+                  Secured / Share Secured Loan up to £50,000
                 </option>
               </select>
             </div>
@@ -81,15 +84,31 @@ export default function Home() {
                 type="range"
                 name="rangeInput"
                 className="range rounded-lg bg-primary h-[10px] w-full"
-                min="100"
+                min={`${
+                  loanType === "Personal Loan up to £7,500"
+                    ? "1000"
+                    : loanType === "Personal Loan £7,500 to £15,000"
+                    ? "7500"
+                    : loanType === "Personal Loan £15,000 to £25,000"
+                    ? "15000"
+                    : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                    ? "1000"
+                    : loanType === "Share-Secure Loan up to £50,000"
+                    ? "1000"
+                    : "1000"
+                }`}
                 max={`${
                   loanType === "Personal Loan up to £7,500"
                     ? "7500"
-                    : loanType === "Personal Loan £7,501 to £15,000"
+                    : loanType === "Personal Loan £7,500 to £15,000"
                     ? "15000"
                     : loanType === "Personal Loan £15,000 to £25,000"
                     ? "25000"
-                    : "25000"
+                    : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                    ? "100000"
+                    : loanType === "Share-Secure Loan up to £50,000"
+                    ? "50000"
+                    : "100000"
                 }`}
                 step="100"
                 value={loanAmount}
@@ -106,14 +125,14 @@ export default function Home() {
                   <div className="flex">
                     <span
                       id="termInput"
-                      className="text-white w-[20px] bg-transparent"
+                      className="text-white w-[28px] bg-transparent"
                     >
                       {loanTerm}
                     </span>
                     <span> months </span>
                     <span
                       id="termInput"
-                      className="text-white w-[33px] bg-transparent"
+                      className="text-white w-[38px] bg-transparent"
                     >
                       ({loanTermYears.toFixed(1)}
                     </span>
@@ -128,7 +147,19 @@ export default function Home() {
                 name="termInput"
                 className="range rounded-lg bg-primary h-[10px] w-full"
                 min="2"
-                max="60"
+                max={`${
+                  loanType === "Personal Loan up to £7,500"
+                    ? "60"
+                    : loanType === "Personal Loan £7,500 to £15,000"
+                    ? "120"
+                    : loanType === "Personal Loan £15,000 to £25,000"
+                    ? "120"
+                    : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                    ? "300"
+                    : loanType === "Share-Secure Loan up to £50,000"
+                    ? "300"
+                    : "300"
+                }`}
                 step="1"
                 value={loanTerm}
               />
