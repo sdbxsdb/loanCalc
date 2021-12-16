@@ -29,6 +29,7 @@ export default function Home() {
   const personalLoanUpTo50000Interest = loanAmount * loanTermYears * (parseFloat(personalLoanUpTo50000InterestAmount) / 100);
   const personalLoanUpTo50000Total = parseFloat(loanAmount) + parseFloat(personalLoanUpTo50000Interest.toFixed(2));
 
+
   function updateSchedule(e, scheduleValue) {
     e.preventDefault();
     setSchedule(scheduleValue);
@@ -74,7 +75,6 @@ export default function Home() {
 
             </div>
 
-             
             <div className="flex flex-col gap-y-10">
 
               {/*SELECT LOAN AMOUNT LABEL*/}
@@ -189,7 +189,8 @@ export default function Home() {
                 value={loanTerm}
               />
 
-              <div className="flex flex-col md:flex-row justify-between w-full text-center   border-b-2 border-opacity-10">
+              <div className={`flex flex-col md:flex-row justify-between w-full text-center  border-b-2 border-opacity-10
+              ${loanType === "Select Loan Type" ? "pb-[28px]" : "pb-0" }`}>
                 
                 {/*TOTAL YOU'LL PAY*/}
                 <div className="w-full md:w-1/4 py-6 md:py-28 flex flex-col">
@@ -354,7 +355,19 @@ export default function Home() {
                     }`}
                   </p>
                   <p className="text-footerNav">
-                    £{personalLoanUpTo7500Interest.toFixed(2)}
+                  {` ${
+                      loanType === "Personal Loan up to £7,500"
+                        ? `£${(personalLoanUpTo7500Interest).toFixed(2)}`
+                        : loanType === "Personal Loan £7,500 to £15,000"
+                        ? `£${(personalLoanUpTo15000Interest.toFixed(2))}`
+                        : loanType === "Personal Loan £15,000 to £25,000"
+                        ? `£${(personalLoanUpTo25000Interest.toFixed(2))}`
+                        : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                        ? `£${(personalLoanUpTo100000Interest.toFixed(2))}`
+                        : loanType === "Share-Secure Loan up to £50,000"
+                        ? `£${(personalLoanUpTo50000Interest.toFixed(2))}`
+                        : ""
+                    }`}
                   </p>
                 </div>
 
@@ -409,7 +422,7 @@ export default function Home() {
         <p className="mt-6 opacity-30 text-center px-4">
           *for amounts over £25,000, please contact the credit union directly
         </p>
-        
+
       </div>
     </section>
   );
