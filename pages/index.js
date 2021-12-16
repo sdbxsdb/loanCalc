@@ -251,6 +251,8 @@ export default function Home() {
                     </ul>
 
                     <div className="w-full flex justify-center items-center mt-6">
+
+                      {/*MONTHLY*/} 
                       {schedule === "monthly" ? (
                         <div className="w-[200px] h-[200px] bg-lightBlue rounded-full flex flex-col items-center justify-center ">
                           <p className="opacity-30 text-mobileNav">
@@ -259,21 +261,22 @@ export default function Home() {
                           <p className="text-3xl">
                           {` ${
                               loanType === "Personal Loan up to £7,500"
-                                ? `£${(personalLoanUpTo7500Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo7500Total / loanTerm * 4).toFixed(2)}`
                                 : loanType === "Personal Loan £7,500 to £15,000"
-                                ? `£${(personalLoanUpTo15000Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo15000Total / loanTerm * 4).toFixed(2)}`
                                 : loanType === "Personal Loan £15,000 to £25,000"
-                                ? `£${(personalLoanUpTo25000Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo25000Total / loanTerm * 4).toFixed(2)}`
                                 : loanType === "Secured / Share Secured Personal Loan up to £100,000"
-                                ? `£${(personalLoanUpTo100000Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo100000Total / loanTerm * 4).toFixed(2)}`
                                 : loanType === "Share-Secure Loan up to £50,000"
-                                ? `£${(personalLoanUpTo50000Total / loanTerm).toFixed(2)}`
+                                ? `£${(personalLoanUpTo50000Total / loanTerm * 4).toFixed(2)}`
                                 : ""
                             }`}
                           </p>
                         </div>
                       ) : null}
 
+                      {/*FORTNIGHTLY*/} 
                       {schedule === "fortnightly" ? (
                         <div className="w-[200px] h-[200px] bg-lightBlue rounded-full flex flex-col items-center justify-center ">
                           <p className="opacity-30 text-mobileNav">
@@ -297,17 +300,26 @@ export default function Home() {
                         </div>
                       ) : null}
 
+                      {/*WEEKLY*/} 
                       {schedule === "weekly" ? (
                         <div className="w-[200px] h-[200px] bg-lightBlue rounded-full flex flex-col items-center justify-center ">
                           <p className="opacity-30 text-mobileNav">
                             Weekly Repairments
                           </p>
                           <p className="text-3xl">
-                            £
-                            {(
-                              personalLoanUpTo7500Total /
-                              (loanTerm * 4)
-                            ).toFixed(2)}
+                          {` ${
+                              loanType === "Personal Loan up to £7,500"
+                                ? `£${(personalLoanUpTo7500Total / loanTerm).toFixed(2)}`
+                                : loanType === "Personal Loan £7,500 to £15,000"
+                                ? `£${(personalLoanUpTo15000Total / loanTerm).toFixed(2)}`
+                                : loanType === "Personal Loan £15,000 to £25,000"
+                                ? `£${(personalLoanUpTo25000Total / loanTerm).toFixed(2)}`
+                                : loanType === "Secured / Share Secured Personal Loan up to £100,000"
+                                ? `£${(personalLoanUpTo100000Total / loanTerm).toFixed(2)}`
+                                : loanType === "Share-Secure Loan up to £50,000"
+                                ? `£${(personalLoanUpTo50000Total / loanTerm).toFixed(2)}`
+                                : ""
+                            }`}
                           </p>
                         </div>
                       ) : null}
