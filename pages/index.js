@@ -43,6 +43,8 @@ export default function Home() {
         <div className="w-screen md:w-auto p-14 bg-darkestBlue md:rounded-2xl">
           <form action="" className="flex flex-col gap-y-10">
             <div className="w-full bg-primary rounded-full pr-4">
+              
+              {/*SELECT LOAN TYPE*/} 
               <select
                 value={loanType}
                 onChange={(e) => setLoanType(e.target.value)}
@@ -69,9 +71,13 @@ export default function Home() {
                   Secured / Share Secured Loan up to £50,000
                 </option>
               </select>
+
             </div>
 
+             
             <div className="flex flex-col gap-y-10">
+
+              {/*SELECT LOAN AMOUNT LABEL*/}
               <div className="flex flex-col gap-y-6">
                 <div className="flex justify-between w-full">
                   <label
@@ -92,6 +98,7 @@ export default function Home() {
                 </div>
               </div>
 
+              {/*SELECT LOAN AMOUNT RANGE*/}
               <input
                 onChange={(e) => setLoanAmount(e.target.value)}
                 type="range"
@@ -129,6 +136,7 @@ export default function Home() {
                 value={loanAmount}
               />
 
+              {/*SELECT LOAN TERM LABLE*/}
               <div className="flex flex-col gap-y-6">
                 <div className="flex justify-between w-full">
                   <label
@@ -156,6 +164,7 @@ export default function Home() {
                 </div>
               </div>
 
+              {/*SELECT LOAN TERM RANGE*/}
               <input
                 onChange={(e) => setLoanTerm(e.target.value)}
                 type="range"
@@ -350,6 +359,7 @@ export default function Home() {
                 </div>
 
               </div>
+
               <div className="flex justify-between items-center w-full">
                 <p className="text-1xs">6.05% APR (£100 - £25,000)</p>
                 <div className="flex justify-start overflow-hidden">
@@ -370,6 +380,8 @@ export default function Home() {
                         fill="white"
                       />
                     </svg>
+
+                    {/*APPLY NOW BUTTON*/}
                     <button className="uppercase transform group-hover:translate-x-2 transition">
                       Apply Now
                     </button>
@@ -389,6 +401,7 @@ export default function Home() {
                   </a>
                 </div>
               </div>
+
             </div>
           </form>
         </div>
@@ -396,6 +409,7 @@ export default function Home() {
         <p className="mt-6 opacity-30 text-center px-4">
           *for amounts over £25,000, please contact the credit union directly
         </p>
+        
       </div>
     </section>
   );
