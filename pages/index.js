@@ -268,7 +268,7 @@ export default function Home() {
 
                       {/*MONTHLY*/} 
                       {schedule === "monthly" ? (
-                        <div className="w-[200px] h-[200px] bg-lightBlue rounded-full flex flex-col items-center justify-center ">
+                        <div className="w-[205px] h-[205px] bg-lightBlue rounded-full flex flex-col items-center justify-center ">
                           <p className="opacity-30 text-mobileNav">
                             Monthly Repairments
                           </p>
@@ -292,7 +292,7 @@ export default function Home() {
 
                       {/*FORTNIGHTLY*/} 
                       {schedule === "fortnightly" ? (
-                        <div className="w-[200px] h-[200px] bg-lightBlue rounded-full flex flex-col items-center justify-center ">
+                        <div className="w-[205px] h-[205px] bg-lightBlue rounded-full flex flex-col items-center justify-center ">
                           <p className="opacity-30 text-mobileNav">
                             Fortnightly Repairments
                           </p>
@@ -316,7 +316,7 @@ export default function Home() {
 
                       {/*WEEKLY*/} 
                       {schedule === "weekly" ? (
-                        <div className="w-[200px] h-[200px] bg-lightBlue rounded-full flex flex-col items-center justify-center ">
+                        <div className="w-[205px] h-[205px] bg-lightBlue rounded-full flex flex-col items-center justify-center ">
                           <p className="opacity-30 text-mobileNav">
                             Weekly Repairments
                           </p>
