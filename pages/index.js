@@ -327,7 +327,7 @@ export default function Home() {
                           className="cursor-pointer"
                           onClick={(e) => updateSchedule(e, "monthly")}
                         >
-                          MonthlyNetlifyTESTAutoDeploy
+                          Monthly
                         </button>
                       </li>
                       <li
