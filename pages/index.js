@@ -294,7 +294,7 @@ export default function Home() {
                 
                 {/*TOTAL YOU'LL PAY*/}
                 <div className="w-full md:w-1/4 py-6 md:py-28 flex flex-col">
-                  <p className="opacity-30 text-mobileNav">Total you'll pay</p>
+                  <p className="opacity-30 text-mobileNav">Total you&apos;ll pay</p>
                   <p className="text-footerNav">
                     {` ${
                       loanType === "Personal Loan up to £7,500"
