@@ -175,7 +175,7 @@ export default function Home() {
   return (
     <section>
 
-      <div className="w-full lg:w-7/12 max-w-[754px] text-white">
+      <div className=" text-white">
         <div className="w-screen md:w-auto p-14 bg-darkestBlue md:rounded-2xl">
           <form action="" className="flex flex-col gap-y-10">
             <div className="w-full bg-primary rounded-full pr-4">
