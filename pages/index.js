@@ -175,8 +175,8 @@ export default function Home() {
   return (
     <section>
 
-      <div className=" text-white">
-        <div className="w-screen md:w-auto p-14 bg-darkestBlue md:rounded-2xl">
+      <div className="w-full lg:w-7/12 max-w-[754px] text-white">
+        <div className="w-screen md:w-full p-14 bg-darkestBlue sm:rounded-2xl">
           <form action="" className="flex flex-col gap-y-10">
             <div className="w-full bg-primary rounded-full pr-4">
               
@@ -289,11 +289,11 @@ export default function Home() {
                 value={loanTerm}
               />
 
-              <div className={`flex flex-col md:flex-row justify-between w-full text-center  border-b-2 border-opacity-10
+              <div className={`flex flex-col sm:flex-row justify-between w-full text-center  border-b-2 border-opacity-10
               ${loanType === "Select Loan Type" ? "pb-[28px]" : "pb-0" }`}>
                 
                 {/*TOTAL YOU'LL PAY*/}
-                <div className="w-full md:w-1/4 py-6 md:py-28 flex flex-col">
+                <div className="w-full sm:w-1/4 pt-6 sm:py-28 flex flex-col">
                   <p className="opacity-30 text-mobileNav">Total you&apos;ll pay</p>
                   <p className="text-footerNav">
                     {` ${
@@ -313,9 +313,9 @@ export default function Home() {
                 </div>
 
                 {/*AMOUNT PAYABLE*/}
-                <div className="flex-1 order-first md:order-none paymentSchedule">
+                <div className="flex-1 order-first sm:order-none paymentSchedule">
                   <div className="">
-                    <ul className="flex justify-around md:justify-between gap-x-4">
+                    <ul className="flex justify-around sm:justify-between gap-x-4">
                       <li
                         className={`pb-[5px] ${
                           schedule !== "monthly"
@@ -426,7 +426,7 @@ export default function Home() {
                 </div>
 
                 {/*INTEREST*/}
-                <div className="w-full md:w-1/4 py-6 md:py-28 flex flex-col">
+                <div className="w-full sm:w-1/4 py-6 sm:py-28 flex flex-col">
                   <p className="opacity-30 text-mobileNav">Interest
                   {` ${
                       loanType === "Personal Loan up to £7,500"
@@ -461,12 +461,12 @@ export default function Home() {
 
               </div>
 
-              <div className="flex justify-between items-center w-full">
+              <div className="flex flex-col-reverse sm:flex-row justify-between items-center w-full">
                 <p className="text-1xs">6.05% APR (£100 - £25,000)</p>
                 <div className="flex justify-start overflow-hidden">
                   <a
                     href="{{ button_link }}"
-                    className="rounded-full bg-secondary min-w-max py-[16px] px-[24px] text-smallTitle leading-squat text-white flex items-center group"
+                    className="rounded-full bg-secondary min-w-max py-[16px] px-[24px] text-smallTitle leading-squat text-white flex items-center group mb-4 sm:mb-0 "
                   >
                     <svg
                       width="8"
