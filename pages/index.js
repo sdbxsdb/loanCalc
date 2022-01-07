@@ -145,7 +145,7 @@ export default function Home() {
       case 'Secured / Share Secured Personal Loan up to £100,000':
         return `£${(personalLoanUpTo100000Total / loanTerm).toFixed(2)}`
       case 'Share-Secure Loan up to £50,000':
-        `£${(personalLoanUpTo50000Total / loanTerm).toFixed(2)}`
+        return `£${(personalLoanUpTo50000Total / loanTerm).toFixed(2)}`
 
     }
   }
